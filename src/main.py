@@ -10,8 +10,11 @@ processes = {}
 async def main():
     return FileResponse("public/index.html")
 
+@app.get("/start")
 @app.api_route("/start/{start_number}", methods=["GET", "POST"])
-async def start_robot(start_number: int = Path(ge=0)):
+async def start_robot(start_number: int = 0):
+    if start_number < 0:
+        return {"message": "Стартовое число должно быть больше нуля"}
     if "robot" in processes:
         return {"message": "Робот уже запущен."}
     
