@@ -17,7 +17,6 @@
             evt.preventDefault();
             var startNumber = document.getElementById('startNumber').value;
             var action = evt.submitter.value;
-            console.log(startNumber);
 
             if (action === 'start') {
                 fetch(`/start/${startNumber}`, { method: 'POST' })

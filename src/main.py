@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Path
 from fastapi.responses import FileResponse
 import subprocess
 
@@ -11,7 +11,7 @@ async def main():
     return FileResponse("public/index.html")
 
 @app.api_route("/start/{start_number}", methods=["GET", "POST"])
-async def start_robot(start_number: int = 0):
+async def start_robot(start_number: int = Path(ge=0)):
     if "robot" in processes:
         return {"message": "Робот уже запущен."}
     
