@@ -10,7 +10,7 @@
 1. Склонируйте репозиторий проекта:
     ```sh
     git clone git@github.com:Mexus209/robot-counter.git
-    cd robot-counter
+    cd robot-counter/src
     ```
 2. Установите необходимые зависимости:
     ```sh
