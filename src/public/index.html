@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Робот счетчик</title>
+</head>
+<body>
+    <h1>Управление Роботом</h1>
+    <form id="startForm">
+        <label for="startNumberLabel">Стартовое число:</label>
+        <input type="number" id="startNumber" name="startNumber" value="0" min="0">
+        <button type="submit" name="action" value="start">Запустить робота</button>
+        <button type="submit" name="action" value="stop">Остановить робота</button>
+    </form>
+
+    <script>
+        document.getElementById('startForm').onsubmit = function(evt) {
+            evt.preventDefault();
+            var startNumber = document.getElementById('startNumber').value;
+            var action = evt.submitter.value;
+            console.log(startNumber);
+
+            if (action === 'start') {
+                fetch(`/start/${startNumber}`, { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => alert(data.message));
+            } else if (action === 'stop') {
+                fetch('/stop', { method: 'GET' })
+                    .then(response => response.json())
+                    .then(data => alert(data.message));
+            }
+        };
+    </script>
+</body>
+</html>
