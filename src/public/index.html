@@ -16,6 +16,7 @@
         document.getElementById('startForm').onsubmit = function(evt) {
             evt.preventDefault();
             var startNumber = document.getElementById('startNumber').value;
+            if (typeof(startNumber)=='string') startNumber = 0;
             var action = evt.submitter.value;
 
             if (action === 'start') {
